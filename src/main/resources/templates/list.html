@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>所有员工信息</title>
+    <style type="text/css">
+        table td {
+            text-align: center;
+        }
+        /*合并表格的边框*/
+
+        table {
+            width: 700px;
+            border-collapse: collapse;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        div {
+            margin: 0 auto;
+            width: 700px;
+        }
+    </style>
+
+</head>
+<script>
+    function add() {
+
+    }
+</script>
+<body>
+<div>
+    <h3>所有员工信息</h3>
+    <a th:href="add">添加员工信息</a><br/>
+    <table border="1">
+
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>手机</th>
+            <th>操作</th>
+        </tr>
+       <tr th:each="emp:${emplist}">
+           <td th:text="${empStat.count}"></td>
+           <td th:text="${emp.name}"></td>
+           <td th:text="${emp.sex}"></td>
+           <td th:text="${emp.age}"></td>
+           <td th:text="${emp.phone}"></td>
+           <td><a th:href="@{'query.do?id='+${emp.id}}">修改</a>  <a th:href="@{'/delete.do?id='+${emp.id}}">删除</a> </td>
+
+       </tr>
+
+    </table>
+</div>
+
+
+
+</body>
+
+</html>
